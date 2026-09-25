@@ -1,4 +1,8 @@
 import { NextResponse } from "next/server";
+import { getTelegramEnv } from "@/lib/telegram-env";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 type OrderItemPayload = {
   productId: string;
@@ -86,19 +90,7 @@ function isValidOrder(body: unknown): body is OrderPayload {
 
 export async function POST(request: Request) {
   try {
-    const token = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
-
-    if (!token || !chatId) {
-      return NextResponse.json(
-        {
-          success: false,
-          error:
-            "Notifications Telegram non configurées. Ajoutez TELEGRAM_BOT_TOKEN et TELEGRAM_CHAT_ID dans .env.local, puis redémarrez le serveur.",
-        },
-        { status: 500 }
-      );
-    }
+    const { token, chatId } = getTelegramEnv();
 
     const body: unknown = await request.json();
     if (!isValidOrder(body)) {
