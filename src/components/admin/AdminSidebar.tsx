@@ -103,7 +103,7 @@ export function AdminSidebar({ open, onClose }: AdminSidebarProps) {
       <div className="mx-3 mb-3 overflow-hidden rounded-xl border border-white/8 bg-[#111111]">
         <div className="relative h-28 bg-card">
           <Image
-            src="/images/product-back.png"
+            src="/images/brotherhood-tee-mockup.png"
             alt="Brother Hood"
             fill
             className="object-contain p-3"

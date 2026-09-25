@@ -27,7 +27,7 @@ export function Packaging() {
           <FadeUp>
             <div className="relative aspect-[4/3] overflow-hidden border border-white/8 bg-card group">
               <Image
-                src="/images/product-back.png"
+                src="/images/brotherhood-tee-mockup.png"
                 alt="Brother Hood packaging / product"
                 fill
                 className="object-contain object-center p-10 transition-transform duration-700 group-hover:scale-105"

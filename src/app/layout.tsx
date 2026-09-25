@@ -46,6 +46,10 @@ export const metadata: Metadata = {
     siteName: "Brother Hood",
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: "/images/logo-bh.png",
+    apple: "/images/logo-bh.png",
+  },
 };
 
 export default function RootLayout({

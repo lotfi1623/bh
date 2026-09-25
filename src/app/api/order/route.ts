@@ -93,7 +93,8 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          error: "Telegram is not configured on the server (TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID).",
+          error:
+            "Notifications Telegram non configurées. Ajoutez TELEGRAM_BOT_TOKEN et TELEGRAM_CHAT_ID dans .env.local, puis redémarrez le serveur.",
         },
         { status: 500 }
       );

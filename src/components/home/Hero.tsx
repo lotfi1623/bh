@@ -82,7 +82,7 @@ export function Hero() {
             <div className="relative aspect-[4/5] max-w-lg mx-auto overflow-hidden border border-white/8 bg-card">
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10 pointer-events-none" />
               <Image
-                src="/images/product-front.png"
+                src="/images/brotherhood-tee-mockup.png"
                 alt="Brother Hood BH Heavyweight Tee"
                 fill
                 priority

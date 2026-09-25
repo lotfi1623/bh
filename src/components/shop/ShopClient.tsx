@@ -14,6 +14,12 @@ import type { Product } from "@/types";
 
 type SortKey = "featured" | "price-asc" | "price-desc" | "name";
 
+function shopProductImage(product: Product): string | undefined {
+  return (
+    product.images.find((src) => !src.includes("/team-")) ?? product.images[0]
+  );
+}
+
 function ProductCard({
   product,
   index,
@@ -27,9 +33,12 @@ function ProductCard({
   newLabel: string;
   locale: "fr" | "ar";
 }) {
-  const imageSrc = product.images[0];
+  const imageSrc = shopProductImage(product);
   const isProductShot =
-    imageSrc && (imageSrc.includes("product") || isCatalogImage(imageSrc));
+    imageSrc &&
+    (imageSrc.includes("product") ||
+      imageSrc.includes("brotherhood-tee") ||
+      isCatalogImage(imageSrc));
 
   return (
     <FadeUp delay={(index % 4) * 0.06} as="article">
@@ -95,7 +104,8 @@ export function ShopClient() {
   const [query, setQuery] = useState(initialQ);
   const [category, setCategory] = useState(initialCat);
   const [sort, setSort] = useState<SortKey>("featured");
-  const [maxPrice, setMaxPrice] = useState(8000);
+  const [maxPrice, setMaxPrice] = useState(5000);
+  const [priceCeiling, setPriceCeiling] = useState(5000);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
@@ -108,8 +118,10 @@ export function ShopClient() {
         const data = await fetchProducts();
         if (!cancelled) {
           setProducts(data);
-          const topPrice = data.reduce((max, p) => Math.max(max, p.price), 8000);
-          setMaxPrice(Math.max(topPrice, 8000));
+          const topPrice = data.reduce((max, p) => Math.max(max, p.price), 0);
+          const ceiling = Math.max(topPrice, 100);
+          setPriceCeiling(ceiling);
+          setMaxPrice(ceiling);
         }
       } catch (err) {
         if (!cancelled) {
@@ -250,9 +262,9 @@ export function ShopClient() {
               </p>
               <input
                 type="range"
-                min={2000}
-                max={Math.max(maxPrice, 8000)}
-                step={100}
+                min={0}
+                max={priceCeiling}
+                step={priceCeiling <= 1000 ? 10 : 100}
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="w-full accent-white"
