@@ -1,5 +1,8 @@
 import type { Product } from "@/types";
 
+/** Main tee — home CTAs go here instead of /shop */
+export const PRIMARY_PRODUCT_PATH = "/product/1";
+
 export const products: Product[] = [
   {
     id: "1",
@@ -50,5 +53,5 @@ export const NAV_LINKS = [
   { href: "/", labelKey: "home" as const },
   { href: "/shop", labelKey: "shop" as const },
   { href: "/#story", labelKey: "story" as const },
-  { href: "/#community", labelKey: "community" as const },
+  { href: "/#packaging", labelKey: "packaging" as const },
 ];

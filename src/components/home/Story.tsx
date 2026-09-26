@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FadeUp } from "@/components/ui/FadeUp";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/context/LanguageContext";
+import { PRIMARY_PRODUCT_PATH } from "@/data/products";
 
 export function Story() {
   const { t } = useLanguage();
@@ -68,7 +69,7 @@ export function FinalCTA() {
           </span>
         </h2>
         <div className="mt-12">
-          <Button href="/shop" variant="primary" size="lg">
+          <Button href={PRIMARY_PRODUCT_PATH} variant="primary" size="lg">
             {t.cta.enterShop}
           </Button>
         </div>

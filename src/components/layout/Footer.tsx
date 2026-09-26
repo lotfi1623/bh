@@ -29,16 +29,14 @@ export function Footer() {
       title: t.footer.brand,
       links: [
         { label: t.footer.ourStory, href: "/#story" },
-        { label: t.footer.community, href: "/#community" },
-        { label: t.footer.sizeGuide, href: "/#size-guide" },
-        { label: t.footer.quality, href: "/#quality" },
+        { label: t.packaging.title, href: "/#packaging" },
       ],
     },
     {
       title: t.footer.support,
       links: [
-        { label: t.footer.shipping, href: "/#details" },
-        { label: t.footer.returns, href: "/#details" },
+        { label: t.footer.shipping, href: "/#packaging" },
+        { label: t.footer.returns, href: "/product/1" },
         { label: t.footer.contact, href: "mailto:hello@brotherhood.cali" },
       ],
     },

@@ -6,6 +6,7 @@ export const translations = {
       home: "Accueil",
       shop: "Boutique",
       story: "Notre Histoire",
+      packaging: "Emballage",
       community: "Communauté",
       search: "Rechercher…",
       searchPlaceholder: "Rechercher dans la collection…",
@@ -16,10 +17,12 @@ export const translations = {
       subtitle: "Discipline · Force · Fraternité",
       description:
         "Vêtements premium forgés pour ceux qui s'entraînent ensemble et s'élèvent ensemble. On ne suit pas — on construit.",
-      shopNow: "Acheter",
+      shopNow: "Commander",
       ourStory: "Notre Histoire",
       scroll: "Défiler",
       productLabel: "BH Tee Heavyweight",
+      slideMockup: "Présentation",
+      slideWorn: "Porté en street",
     },
     features: {
       eyebrow: "Le Code",
@@ -113,14 +116,18 @@ export const translations = {
     },
     packaging: {
       eyebrow: "Unboxing",
-      title: "Packaging Premium",
-      description: "Du mailer à la carte merci — chaque détail mérite le nom.",
-      mailer: "Mailer Noir Mat",
-      mailerDesc: "Sachet soft-touch avec branding BH blanc. Scellé, net à l'arrivée.",
-      tag: "Étiquette Marque",
-      tagDesc: "Carton épais. Marque embossée. Un détail à garder.",
-      card: "Carte Merci",
-      cardDesc: "Signée pour la Brotherhood. L'expérience commence avant de l'enfiler.",
+      title: "Emballage Brother Hood",
+      description:
+        "Sachet expédition noir premium, scellé, avec le branding blanc Brother Hood — casque, logo, montagnes et contacts sur le sachet.",
+      mailer: "Sachet expédition noir",
+      mailerDesc:
+        "Poly mailer noir brillant, résistant et scellé. Propre à l'arrivée, prêt pour l'expérience Brother Hood.",
+      tag: "Face avant brandée",
+      tagDesc:
+        "Casque spartiate, couronne de laurier, logo BROTHER HOOD distressed et silhouette montagne avec « SUIVEZ-NOUS ».",
+      card: "Contact sur l'emballage",
+      cardDesc:
+        "Instagram @brotherhood.cali et WhatsApp 0556458639 — la Brotherhood reste à portée de main dès la livraison.",
     },
     reviews: {
       eyebrow: "Voix",
@@ -137,7 +144,7 @@ export const translations = {
       title1: "Fais Partie De",
       title2: "Quelque Chose",
       bigger: "De Plus Grand",
-      enterShop: "Entrer Dans La Boutique",
+      enterShop: "Commander",
     },
     shop: {
       eyebrow: "Collection",
@@ -254,6 +261,7 @@ export const translations = {
       home: "الرئيسية",
       shop: "المتجر",
       story: "قصتنا",
+      packaging: "التغليف",
       community: "المجتمع",
       search: "بحث…",
       searchPlaceholder: "ابحث في المجموعة…",
@@ -264,10 +272,12 @@ export const translations = {
       subtitle: "انضباط · قوة · أخوة",
       description:
         "ملابس فاخرة لأولئك الذين يتدربون معاً ويرتفعون معاً. نحن لا نتبع — نحن نبني.",
-      shopNow: "تسوق الآن",
+      shopNow: "اطلب الآن",
       ourStory: "قصتنا",
       scroll: "مرر",
       productLabel: "تيشيرت BH Heavyweight",
+      slideMockup: "عرض المنتج",
+      slideWorn: "ارتداء حقيقي",
     },
     features: {
       eyebrow: "الميثاق",
@@ -361,14 +371,18 @@ export const translations = {
     },
     packaging: {
       eyebrow: "فتح العلبة",
-      title: "تغليف فاخر",
-      description: "من الكيس إلى بطاقة الشكر — كل تفصيل يليق بالاسم.",
-      mailer: "كيس أسود مطفي",
-      mailerDesc: "كيس ناعم بشعار BH أبيض. مغلق ويصل أنيقاً.",
-      tag: "بطاقة العلامة",
-      tagDesc: "كرتون سميك. علامة بارزة. تفصيل يستحق الاحتفاظ.",
-      card: "بطاقة شكر",
-      cardDesc: "موقعة للأخوة. التجربة تبدأ قبل أن ترتديه.",
+      title: "تغليف Brother Hood",
+      description:
+        "كيس شحن أسود فاخر ومغلق، بعلامة Brother Hood البيضاء — خوذة، شعار، جبال وبيانات التواصل على الكيس.",
+      mailer: "كيس شحن أسود",
+      mailerDesc:
+        "كيس بولي أسود لامع، متين ومغلق. يصل نظيفاً وجاهزاً لتجربة Brother Hood.",
+      tag: "الوجه الأمامي",
+      tagDesc:
+        "خوذة سبارتية، إكليل غار، شعار BROTHER HOOD وسلسلة جبال مع « تابعونا ».",
+      card: "التواصل على الكيس",
+      cardDesc:
+        "إنستغرام @brotherhood.cali وواتساب 0556458639 — الأخوة قريبة منك من لحظة التسليم.",
     },
     reviews: {
       eyebrow: "أصوات",
@@ -385,7 +399,7 @@ export const translations = {
       title1: "كن جزءاً من",
       title2: "شيء",
       bigger: "أكبر",
-      enterShop: "ادخل المتجر",
+      enterShop: "اطلب الآن",
     },
     shop: {
       eyebrow: "المجموعة",

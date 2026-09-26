@@ -35,7 +35,7 @@ export function Navbar() {
     home: t.nav.home,
     shop: t.nav.shop,
     story: t.nav.story,
-    community: t.nav.community,
+    packaging: t.nav.packaging,
   };
 
   return (

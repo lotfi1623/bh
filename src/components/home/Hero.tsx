@@ -1,12 +1,48 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { useLanguage } from "@/context/LanguageContext";
+import { PRIMARY_PRODUCT_PATH } from "@/data/products";
+import { cn } from "@/lib/utils";
+
+const SLIDE_INTERVAL_MS = 4000;
 
 export function Hero() {
   const { t } = useLanguage();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const slides = useMemo(
+    () => [
+      {
+        src: "/images/brotherhood-tee-mockup.png",
+        alt: "Brother Hood BH Heavyweight Tee — présentation",
+        label: t.hero.slideMockup,
+        contain: true,
+      },
+      {
+        src: "/images/brotherhood-tee-worn.png",
+        alt: "Brother Hood BH Heavyweight Tee — porté",
+        label: t.hero.slideWorn,
+        contain: false,
+      },
+    ],
+    [t.hero.slideMockup, t.hero.slideWorn]
+  );
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % slides.length);
+    }, SLIDE_INTERVAL_MS);
+
+    return () => window.clearInterval(timer);
+  }, [slides.length]);
+
+  const activeSlide = slides[activeIndex] ?? slides[0];
 
   return (
     <section className="relative min-h-screen flex items-center smoke-bg overflow-hidden">
@@ -64,7 +100,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.55 }}
               className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
-              <Button href="/shop" variant="primary" size="lg">
+              <Button href={PRIMARY_PRODUCT_PATH} variant="primary" size="lg">
                 {t.hero.shopNow}
               </Button>
               <Button href="/#story" variant="secondary" size="lg">
@@ -79,18 +115,55 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="order-1 lg:order-2 relative"
           >
-            <div className="relative aspect-[4/5] max-w-lg mx-auto overflow-hidden border border-white/8 bg-card">
+            <div className="relative aspect-[4/5] max-w-lg mx-auto overflow-hidden border border-white/8 bg-black">
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10 pointer-events-none" />
-              <Image
-                src="/images/brotherhood-tee-mockup.png"
-                alt="Brother Hood BH Heavyweight Tee"
-                fill
-                priority
-                className="object-contain object-center p-6 md:p-10"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSlide.src}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.45 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={activeSlide.src}
+                    alt={activeSlide.alt}
+                    fill
+                    priority={activeIndex === 0}
+                    className={cn(
+                      "object-center transition-transform duration-700",
+                      activeSlide.contain
+                        ? "object-contain p-6 md:p-10"
+                        : "object-cover"
+                    )}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              <span className="absolute top-4 start-4 z-20 text-[10px] tracking-[0.3em] uppercase text-white/80 bg-black/50 px-3 py-1.5 backdrop-blur-sm">
+                {activeSlide.label}
+              </span>
             </div>
-            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 font-display text-sm tracking-[0.3em] text-white/70 whitespace-nowrap">
+
+            <div className="mt-4 flex items-center justify-center gap-2">
+              {slides.map((slide, index) => (
+                <button
+                  key={slide.src}
+                  type="button"
+                  aria-label={slide.label}
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "h-1.5 rounded-full transition-all duration-300",
+                    activeIndex === index ? "w-8 bg-white" : "w-1.5 bg-white/30 hover:bg-white/50"
+                  )}
+                />
+              ))}
+            </div>
+
+            <p className="mt-3 text-center font-display text-sm tracking-[0.3em] text-white/70 whitespace-nowrap">
               {t.hero.productLabel}
             </p>
           </motion.div>
